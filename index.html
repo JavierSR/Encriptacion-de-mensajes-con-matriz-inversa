@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mensajes con inversa matricial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+    <script src="js/main.js"></script>
+</head>
+
+<body onload="mostrarPrimero()">
+    <div class="container" id="wraper">
+            <div id="titulo">
+                <h3>Programa para encriptar y desencriptar mensajes usando algebra lineal</h3>
+                <div id="barra"></div>
+            </div>
+            <div class="cajas" id="enc">
+                <h5 class="bg-light">Encriptar</h5>
+                <div class="input-group mb-3" id="msg">
+                    <input id="texto" maxlength="48" type="text" class="form-control" placeholder="Mensaje a encriptar">
+                    <div class="input-group-append">
+                        <button onclick="obtenerMensaje()" class="btn btn-success" type="submit">></button>  
+                    </div>
+                </div>
+                <table id="tabla1" class="table-borderless">
+                    <tr id="fil1">
+                            <td> <button id="00" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="01" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="02" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="03" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil2">
+                            <td> <button id="10" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="11" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="12" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="13" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil3">
+                            <td> <button id="20" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="21" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="22" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="23" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil4">
+                            <td> <button id="30" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="31" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="32" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="33" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil5">
+                            <td> <button id="40" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="41" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="42" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="43" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil6">
+                            <td> <button id="50" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="51" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="52" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="53" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil7">
+                            <td> <button id="60" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="61" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="62" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="63" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil8">
+                            <td> <button id="70" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="71" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="72" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="73" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil9">
+                            <td> <button id="80" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="81" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="82" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="83" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil10">
+                            <td> <button id="90" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="91" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="92" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="93" type="button" class="btn btn-light"></button> </td>
+                        </tr>
+                    <tr id="fil11">
+                            <td> <button id="100" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="101" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="102" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="103" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                    <tr id="fil12">
+                            <td> <button id="110" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="111" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="112" type="button" class="btn btn-light"></button> </td>
+                            <td> <button id="113" type="button" class="btn btn-light"></button> </td>
+                    </tr>
+                </table>
+                <button onclick="pasar()" type="button" class="btn btn-primary btn-sm" id="boton">Pasar matriz ></button>
+                <div id="pieDePagina">
+                    <p>Creado por Oscar Javier Sandoval Royero, 2018.</h3>
+                </div>
+            </div>
+            <div  class="cajas" id="desenc">
+                <h5 class="bg-light">Desencriptar</h5>
+                <table id="tabla2" class="table-borderless">
+                        <tr id="_fil1">
+                                <td> <input id="_00" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_01" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_02" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_03" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil2">
+                                <td> <input id="_10" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_11" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_12" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_13" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil3">
+                                <td> <input id="_20" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_21" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_22" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_23" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil4">
+                                <td> <input id="_30" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_31" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_32" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_33" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil5">
+                                <td> <input id="_40" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_41" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_42" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_43" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil6">
+                                <td> <input id="_50" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_51" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_52" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_53" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil7">
+                                <td> <input id="_60" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_61" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_62" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_63" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil8">
+                                <td> <input id="_70" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_71" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_72" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_73" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil9">
+                                <td> <input id="_80" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_81" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_82" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_83" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil10">
+                                <td> <input id="_90" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_91" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_92" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_93" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil11">
+                                <td> <input id="_100" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_101" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_102" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_103" type="text" class="btn btn-light"> </td>
+                        </tr>
+                        <tr id="_fil12">
+                                <td> <input id="_110" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_111" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_112" type="text" class="btn btn-light"> </td>
+                                <td> <input id="_113" type="text" class="btn btn-light"> </td>
+                        </tr>
+                </table>
+                <button onclick="agregarFilas()" type="button" class="btn btn-primary btn-sm" id="botonizq">Agregar filas</button>
+                <button onclick="obtenerNumero()" type="button" class="btn btn-success btn-sm" id="botonder">Desencriptar mensaje</button>
+                <div id="mensajeDesenc"></div>                
+            </div>
+    </div>
+</body>
+
+</html>

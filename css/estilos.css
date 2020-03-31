@@ -1,0 +1,98 @@
+body {
+    background-image: url(../img/bg.jpg);
+}
+
+#wraper {
+    background-color: #fff;
+    margin-top: 5%;
+    width: 80%;
+    height: auto;
+    overflow:auto;
+    border: 1.5px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+#titulo {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    word-spacing: 2px;
+} 
+
+#barra {
+    border-bottom: 1px solid #dbdbdb;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+#enc {
+    float: left;
+    margin-left: 55px;
+    width: 40%;
+}
+
+#desenc {
+    float: right;
+    margin-right: 55px;
+    width: 40%;
+}
+.cajas {
+    padding: 10px;
+    width: auto;
+    border-top: 0.8px solid #b3b3b3;
+    border-radius: 6px;
+}
+
+#msg {
+    margin-top: 30px;
+}
+
+#pieDePagina {
+    margin-top: 80px;
+    font-size: 16px;
+}
+
+tr td {
+    padding: 4px;
+}
+
+tr {
+    display: none;
+}
+
+table#tabla1 td > button {
+    width: 90px;
+}
+
+td input {
+    width: 90px;
+}
+
+#boton {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#botonizq {
+    margin-top: 10px;
+    width: 49%;
+}
+
+#botonder {
+    margin-top: 10px;
+    width: 49%;
+}
+
+#tabla2 {
+    margin-top: 30px;
+}
+
+#mensajeDesenc {
+    margin-top: 20px;
+    background-color: #dbdbdb;
+    border: 3px solid #dbdbdb;
+    border-radius: 5px;
+    display: none;
+    height: auto;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculadora de Matrices</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="container" id="wraper">
+        <div class="row">
+            <div class="col-xs-12" id="titulo">
+                <h1>Calculadora de Matrices</h1>
+                <div id="barra"></div>
+            </div>
+            <div class="col-xs-12" id="definir">
+                <p class="bg-light">Seleccione las matrices a trabajar y sus respectivas dimensiones (Desde 1 x 1 hasta 9 x 9)</p>
+                <form class="form-horizontal">
+                    <div class="row" id="campos">
+                        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 form-check-inline disabled">
+                            <div class="row">
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12" id="checks">
+                                    <input type="checkbox" class="form-check-input" id="A">Matriz A <br>
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="filA">Filas</label>
+                                    <input type="number" class="form-control" id="filA">
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="colA">Columnas</label>
+                                    <input type="number" class="form-control" id="colA">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 form-check-inline disabled">
+                            <div class="row">
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-check-label" id="checks">
+                                    <input type="checkbox" class="form-check-input" id="B">Matriz B
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="filB">Filas</label>
+                                    <input type="number" class="form-control" id="filB">
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="colB">Columnas</label>
+                                    <input type="number" class="form-control" id="colB">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 form-check-inline disabled">
+                            <div class="row">
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-check-label" id="checks">
+                                    <input type="checkbox" class="form-check-input" id="C">Matriz C
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="filC">Filas</label>
+                                    <input type="number" class="form-control" id="filC">
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="colC">Columnas</label>
+                                    <input type="number" class="form-control" id="colC">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 form-check-inline disabled">
+                            <div class="row">
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-check-label" id="checks">
+                                    <input type="checkbox" class="form-check-input" id="D">Matriz D
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="filD">Filas</label>
+                                    <input type="number" class="form-control" id="filD">
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="colD">Columnas</label>
+                                    <input type="number" class="form-control" id="colD">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 form-check-inline disabled">
+                            <div class="row">
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-check-label" id="checks">
+                                    <input type="checkbox" class="form-check-input" id="E">Matriz E
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="filE">Filas</label>
+                                    <input type="number" class="form-control" id="filE">
+                                </div>
+                                <div class="control-label col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="colE">Columnas</label>
+                                    <input type="number" class="form-control" id="colE">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-12" id="boton">
+                <input type="button" value="Enviar" class="btn btn-primary"  onclick="declarar()">
+            </div>
+            <div class="col-xs-12" id=llenar>
+                <p class="bg-light">Llenar matrices</p>
+                <form class="form-horizontal">
+                    <div class="row">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
