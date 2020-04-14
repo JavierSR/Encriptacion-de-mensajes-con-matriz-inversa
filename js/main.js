@@ -1,14 +1,19 @@
-const matrizKey = [[1,2,-1,0],[3,0,-1,5],[2,0,-2,4],[-1,0,0,1]];
-var matrizProducto = [], matrizObtenida = [],contador = 2,filas;
+document.getElementById("_fil1").style.display = "block"; //muestra la fila 1 de desencriptar al cargar la pagina
+
+const matrizKey     = [[1,2,-1,0],[3,0,-1,5],[2,0,-2,4],[-1,0,0,1]]
+let matrizProducto  = [],
+    matrizObtenida  = [],
+    contador        = 2,
+    filas;
 
 function obtenerMensaje () {
     reiniciarTabla(); //Oculta toda la tabla para evitar que al reescribir un mensaje mas corto, debajo queden elementos anteriores
-    var mensaje = document.getElementById("texto").value.toLowerCase(); //Guarda en la variable "mensaje" el texto ingresado en el formulario y lo convierte todo a minuscula para evitar problemas con el unicode, ya que a =/= A
+    let mensaje = document.getElementById("texto").value.toLowerCase(); //Guarda en la variable "mensaje" el texto ingresado en el formulario y lo convierte todo a minuscula para evitar problemas con el unicode, ya que a =/= A
     if (validar(mensaje)) {
         mensaje = mensaje.split(" "); //Separo mensaje en cada espacio, siendo ahora mensaje un array que guarda cada palabra en una posicion del vector
-        var mensajeNum = []; 
-        for (var i = 0; i < mensaje.length; i++) { 
-            for (var j = 0; j < mensaje[i].length; j++) {  //Lo recorro y convierto cada letra a numero con la funcion charCodeAt (Equivalente a castear strings con ascii en C++) y se resta una constante que cuadra perfectamente para todo el abecedario
+        let mensajeNum = []; 
+        for (let i = 0; i < mensaje.length; i++) { 
+            for (let j = 0; j < mensaje[i].length; j++) {  //Lo recorro y convierto cada letra a numero con la funcion charCodeAt (Equivalente a castear strings con ascii en C++) y se resta una constante que cuadra perfectamente para todo el abecedario
                 mensajeNum = [...mensajeNum, mensaje[i].charCodeAt(j) - 96]; // Agrego el numero al array  
             }
             if (i < mensaje.length - 1) { 
@@ -16,7 +21,7 @@ function obtenerMensaje () {
             }                                    //El If Valida que no sea el ultimo ciclo asi no inserta un espacio demas detras de la ultima palabra
         }
         //console.log(mensajeNum);
-        for (var i = 1; i <= Math.ceil(mensajeNum.length / 4); i++) {   //Muestra filas segun el largo de la cadena y redondea hacia arriba con math.ceils
+        for (let i = 1; i <= Math.ceil(mensajeNum.length / 4); i++) {   //Muestra filas segun el largo de la cadena y redondea hacia arriba con math.ceils
             document.getElementById("fil"+i).style.display = "block";
         }
         encriptar(mensajeNum);
@@ -27,22 +32,23 @@ function obtenerMensaje () {
 }
 
 function validar (texto) {
-    var validacion = new RegExp (/^[a-z\s]*$/);    //Crea un objeto de la clase RegExp (que viene por defecto en js) y le manda al constructor de la 'a' a la 'z' y espacios /s
+    const validacion = new RegExp (/^[a-z\s]*$/);    //Crea un objeto de la clase RegExp (que viene por defecto en js) y le manda al constructor de la 'a' a la 'z' y espacios /s
     return validacion.test(texto);  //La funcion test busca dentro del string y retorna true si cumple los requisitos del objeto
 }
 
 function validarNum (num) {
-    var validacion = new RegExp (/^0$|^-?[1-9]\d*(\.\d+)?$/);
+    const validacion = new RegExp (/^0$|^-?[1-9]\d*(\.\d+)?$/);
     return validacion.test(num);
 }
+
 function encriptar (array) {
-    var matrizFinal = [];
-    var arrayAux;
-    var id, k = 0;
+    let matrizFinal = [];
+    let arrayAux;
+    let id, k = 0;
     filas = Math.ceil(array.length / 4);
-    for (var i = 0; i < filas; i++) {
+    for (let i = 0; i < filas; i++) {
         arrayAux = [];  //Reinicia el valor de arrayAux
-        for (var j = 0; j < 4; j++) {
+        for (let j = 0; j < 4; j++) {
             if (array[k] == undefined) {  //Como el recorrido se hace suponiendo que todo es de 4 columnas, a la hora de asginar quedan indefinidos los espacios que sobran, entonces los vuelve 0 para rellenar el ultimo renglon
                 array[k] = 0;
             }
@@ -54,8 +60,8 @@ function encriptar (array) {
     console.log("Mensaje a numeros: ");
     console.log(matrizFinal);
     multiplicar (matrizFinal,matrizKey,filas);
-    for (var i = 0; i < filas; i++) {
-        for (var j = 0; j < 4; j++) {
+    for (let i = 0; i < filas; i++) {
+        for (let j = 0; j < 4; j++) {
             id = i.toString() + j.toString();  //llena los ids de la tabla con la posicion i j
             document.getElementById(id).style.display = "block";
             document.getElementById(id).innerHTML = matrizProducto[i][j];
@@ -66,13 +72,13 @@ function encriptar (array) {
 }
 
 function multiplicar (matriz,matriz2,filas) {
-    var suma;
+    let suma;
     matrizProducto = [];
-    for (var i = 0; i < filas; i++) {
+    for (let i = 0; i < filas; i++) {
         matrizProducto [i] = [];
-        for (var j = 0; j < 4; j++) {
+        for (let j = 0; j < 4; j++) {
             suma = 0;
-            for (var k = 0; k < 4; k++) {
+            for (let k = 0; k < 4; k++) {
                 suma += matriz[i][k] * matriz2[k][j];
             }
             matrizProducto[i][j] = suma;
@@ -81,10 +87,9 @@ function multiplicar (matriz,matriz2,filas) {
 }
 
 function reiniciarTabla () {
-    var id;
-    for (var i = 0; i <= 11; i++) {
-        for (var j = 0; j < 4; j++) {
-            id = i.toString() + j.toString();
+    for (let i = 0; i <= 11; i++) {
+        for (let j = 0; j < 4; j++) {
+            const id = i.toString() + j.toString();
             document.getElementById(id).innerHTML = undefined;
             document.getElementById(id).style.display = "none";
         }
@@ -92,39 +97,30 @@ function reiniciarTabla () {
 }
 
 function pasar () {
-    var id;
-    for (var i = 0; i < filas-1; i++) {
-        agregarFilas();
+    for (let i = 0; i < filas-1; i++) {
+        if (contador < 13) {
+            document.getElementById("_fil"+contador).style.display = "block";
+        }
+        else {
+            alert ("Alcanzado maximo de filas permitidas");
+            break;
+        }
+        contador++;
     }
-    for (var i = 0; i < filas; i++) {
-        for (var j = 0; j < 4; j++) {
-            id = i.toString() + j.toString();
+    for (let i = 0; i < filas; i++) {
+        for (let j = 0; j < 4; j++) {
+            const id = i.toString() + j.toString();
             document.getElementById("_"+id).value = matrizProducto[i][j];
             document.getElementById("_"+id).innerHTML = matrizProducto[i][j];
         }
     }
 }
 
-function agregarFilas () {
-    if (contador < 13) {
-        document.getElementById("_fil"+contador).style.display = "block";
-    }
-    else {
-        alert ("Alcanzado maximo de filas permitidas");
-    }
-    contador++;
-}
-
-function mostrarPrimero() {
-    document.getElementById("_fil1").style.display = "block"; //muestra la fila 1 de desencriptar al cargar la pagina
-}
-
 function obtenerNumero() {
-    var id;
-    for (var i = 0; i < contador-1; i++) {
+    for (let i = 0; i < contador-1; i++) {
         matrizObtenida[i] = [];
-        for (var j = 0; j < 4; j++) {
-            id = i.toString() + j.toString();
+        for (let j = 0; j < 4; j++) {
+            const id = i.toString() + j.toString();
             if (typeof document.getElementById("_"+id).value == undefined || document.getElementById("_"+id).value == "") {
                 matrizObtenida[i][j] = 0;
             } else {
@@ -133,9 +129,10 @@ function obtenerNumero() {
         }
     }
     console.log(matrizObtenida);
-    var cantidadValidada = 0,cantidadTotal = 0;
-    for (var i in matrizObtenida) {
-        for (var j in matrizObtenida[i]) {
+    let cantidadValidada = 0,
+        cantidadTotal    = 0;
+    for (let i in matrizObtenida) {
+        for (let j in matrizObtenida[i]) {
             if (validarNum(matrizObtenida[i][j])) {
                 cantidadValidada++;
             }
@@ -151,13 +148,13 @@ function obtenerNumero() {
 }
 
 function desencriptar () {
-    var cadena = "";
-    var matrizInversa = matrix_invert(matrizKey);
+    const matrizInversa = invertirMatriz(matrizKey);
+    let          cadena = "";
     console.log(matrizInversa);
     multiplicar(matrizObtenida,matrizInversa,contador-1);
     console.log("Mensaje en numeros: "+matrizProducto); 
-    for (var i in matrizProducto) {
-        for (var j in matrizProducto[i]) {
+    for (let i in matrizProducto) {
+        for (let j in matrizProducto[i]) {
             if (Math.round(matrizProducto[i][j] == 0)) {
                 cadena += " ";
             }
@@ -170,7 +167,7 @@ function desencriptar () {
     document.getElementById("mensajeDesenc").innerHTML = cadena;
 }
 
-function matrix_invert(M){
+function invertirMatriz(M){
     //Tomado de http://blog.acipo.com/matrix-inversion-in-javascript/
 
     // I use Guassian Elimination to calculate the inverse:
@@ -185,8 +182,8 @@ function matrix_invert(M){
     if(M.length !== M[0].length){return;}
     
     //create the identity matrix (I), and a copy (C) of the original
-    var i=0, ii=0, j=0, dim=M.length, e=0, t=0;
-    var I = [], C = [];
+    let i=0, ii=0, j=0, dim=M.length, e=0, t=0;
+    let I = [], C = [];
     for(i=0; i<dim; i+=1){
         // Create the row
         I[I.length]=[];
